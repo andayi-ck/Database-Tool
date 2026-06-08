@@ -3,6 +3,7 @@
 
 A full-stack, local web application that automates business reporting and paperless document ingestion. This tool allows users to run complex, predefined database queries to generate downloadable Excel sheets and integrates an OCR pipeline to digitize scanned physical documents into a searchable database.
 
+
 ---
 
 ## 🚀 Key Features
