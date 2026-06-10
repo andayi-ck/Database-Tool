@@ -1,0 +1,81 @@
+/* Custom styles for Kabarak Script Runner */
+
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+	font-size: 1.5rem;
+}
+
+.script-card {
+	transition: all 0.3s ease;
+}
+
+.script-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.table-responsive {
+	max-height: 500px;
+	overflow-y: auto;
+}
+
+.dataframe th {
+	position: sticky;
+	top: 0;
+	background-color: #343a40;
+	color: white;
+	z-index: 10;
+}
+
+.dataframe tr:hover {
+	background-color: #f8f9fa;
+}
+
+footer {
+	margin-top: 50px;
+	padding: 20px;
+	background-color: #f8f9fa;
+	text-align: center;
+	border-top: 1px solid #dee2e6;
+}
+
+.stat-card {
+	text-align: center;
+	padding: 20px;
+	border-radius: 10px;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+}
+
+.stat-card i {
+	font-size: 2rem;
+	margin-bottom: 10px;
+}
+
+.stat-number {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+/* Print styles */
+@media print {
+
+	.navbar,
+	.footer,
+	.btn,
+	.alert-info {
+		display: none !important;
+	}
+
+	.table-responsive {
+		overflow: visible !important;
+	}
+
+	.dataframe th {
+		background-color: #000 !important;
+		color: #000 !important;
+	}
+}
