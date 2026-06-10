@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "name": "\ud83d\udcda Students by Date Range & Department",
+    "description": "Get students enrolled between two dates, filter by department",
+    "sql": "SELECT s.student_id, s.first_name, s.last_name, s.email, s.course_code, c.course_name, s.enrollment_date FROM students s JOIN courses c ON s.course_code = c.course_code WHERE s.enrollment_date BETWEEN '{start_date}' AND '{end_date}' AND c.department = '{department}' ORDER BY s.enrollment_date",
+    "parameters": [
+      "start_date",
+      "end_date",
+      "department"
+    ],
+    "category": "Academics",
+    "created_at": "2026-06-10T21:57:32.586330"
+  },
+  {
+    "id": 2,
+    "name": "\ud83d\udccb Attendance Report by Date Range",
+    "description": "Get attendance records for a specific date range",
+    "sql": "SELECT a.student_id, s.first_name, s.last_name, a.course_code, a.attendance_date, a.status FROM attendance a JOIN students s ON a.student_id = s.student_id WHERE a.attendance_date BETWEEN '{start_date}' AND '{end_date}' ORDER BY a.attendance_date",
+    "parameters": [
+      "start_date",
+      "end_date"
+    ],
+    "category": "Attendance",
+    "created_at": "2026-06-10T21:57:32.586330"
+  },
+  {
+    "id": 3,
+    "name": "\ud83d\udcdd Exam Results by Semester",
+    "description": "Get exam results for a specific semester",
+    "sql": "SELECT e.student_id, s.first_name, s.last_name, e.course_code, e.exam_name, e.score, e.grade FROM exams e JOIN students s ON e.student_id = s.student_id WHERE e.semester = '{semester}' ORDER BY e.score DESC",
+    "parameters": [
+      "semester"
+    ],
+    "category": "Examinations",
+    "created_at": "2026-06-10T21:57:32.586330"
+  },
+  {
+    "id": 4,
+    "name": "\ud83d\udcb0 Student Financial Transactions",
+    "description": "Get fee payment history for a student",
+    "sql": "SELECT transaction_date, transaction_type, amount, payment_method, receipt_number, status FROM transactions WHERE student_id = '{student_id}' ORDER BY transaction_date DESC",
+    "parameters": [
+      "student_id"
+    ],
+    "category": "Finance",
+    "created_at": "2026-06-10T21:57:32.586330"
+  },
+  {
+    "id": 5,
+    "name": "\ud83d\udc68\u200d\ud83c\udfeb Staff by Department",
+    "description": "List all staff in a specific department",
+    "sql": "SELECT staff_id, first_name, last_name, position, email, phone, hire_date FROM staff WHERE department = '{department}' AND status = 'Active'",
+    "parameters": [
+      "department"
+    ],
+    "category": "HR",
+    "created_at": "2026-06-10T21:57:32.586330"
+  },
+  {
+    "id": 6,
+    "name": "\ud83d\udcca Course Enrollment Summary",
+    "description": "Get enrollment statistics per course",
+    "sql": "SELECT c.course_code, c.course_name, c.department, c.enrolled_count, c.max_capacity, ROUND(100.0 * c.enrolled_count / c.max_capacity, 2) as capacity_usage FROM courses c ORDER BY capacity_usage DESC",
+    "parameters": [],
+    "category": "Academics",
+    "created_at": "2026-06-10T21:57:32.586330"
+  },
+  {
+    "id": 7,
+    "name": "\ud83c\udf93 Student Performance Summary",
+    "description": "Get average exam scores per student",
+    "sql": "SELECT s.student_id, s.first_name, s.last_name, s.course_code, ROUND(AVG(e.score), 2) as average_score, COUNT(e.exam_id) as exams_taken FROM students s JOIN exams e ON s.student_id = e.student_id GROUP BY s.student_id ORDER BY average_score DESC",
+    "parameters": [],
+    "category": "Academics",
+    "created_at": "2026-06-10T21:57:32.586330"
+  },
+  {
+    "id": 8,
+    "name": "\ud83d\udcc5 Today's Attendance",
+    "description": "Get attendance for today's date",
+    "sql": "SELECT s.student_id, s.first_name, s.last_name, a.status FROM students s LEFT JOIN attendance a ON s.student_id = a.student_id WHERE a.attendance_date = date('now')",
+    "parameters": [],
+    "category": "Attendance",
+    "created_at": "2026-06-10T21:57:32.586330"
+  }
+]
